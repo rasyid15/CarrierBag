@@ -40,7 +40,10 @@ export default function ProductDetail() {
                 <AiOutlineMinusCircle />
               </button>
               <p className="text-center text-2xl max-w-[24px]">{count}</p>
-              <button className="text-4xl" onClick={() => setCount(count + 1)}>
+              <button 
+              className="text-4xl" 
+              onClick={() => setCount(count + 1)}
+              disabled={count >= item.stock}>
                 <AiOutlinePlusCircle />
               </button>
             </div>

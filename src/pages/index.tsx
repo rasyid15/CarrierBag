@@ -19,13 +19,13 @@ export default function Home() {
       </Head>
       <Navbar />
       <div>
-        <div className="h-screen">
+        <div className="h-[80vh]">
           <div className="space-x-12 pt-16 ml-12">
             <Image
               alt=""
               src={Carrier}
-              width={500}
-              height={500}
+              width={400}
+              height={400}
               className="float-right"
             />
             <div className="pt-24">
@@ -40,7 +40,8 @@ export default function Home() {
             <button className="button">Buy Now!</button>
           </div>
         </div>
-        <div className="grid grid-cols-4">
+        <div className="text-center text-3xl font-poppins font-semibold mb-10">Our Best Sales!</div>
+        <div className="grid grid-cols-4 gap-4 p-4">
           {data.map((item, index) => (
             <div className="" key={index}>
               <div className="card">

@@ -1,6 +1,6 @@
 import { useRouter } from "next/router";
 import { useState } from "react";
-import data from "@/data/data";
+import data from "@/data/data.json";
 import Navbar from "@/component/navbar";
 import Footer from "@/component/footer";
 import Image from "next/image";

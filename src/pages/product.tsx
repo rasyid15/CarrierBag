@@ -1,15 +1,33 @@
 import Navbar from "@/component/navbar";
 import Footer from "@/component/footer";
 import Head from "next/head";
-import data from "../data/data";
 import Image from "next/image";
 import { useRouter } from "next/navigation";
 import useFavorites from "@/hooks/useFavorites";
+import { useState, useEffect } from "react";
+
 
 export default function Product() {
   const router = useRouter();
   const { favorites, toggleFavorite } = useFavorites();
 
+  const [data, setData] = useState<any>([]);
+
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const response = await fetch(
+          "https://api.jsonbin.io/v3/b/640ed497ebd26539d08dbbef"
+        );
+        const data = await response.json();
+        setData(data.record);
+      } catch (error) {
+        console.log(error);
+      }
+    };
+
+    fetchData();
+  }, []);
   return (
     <>
       <Head>
@@ -20,10 +38,10 @@ export default function Product() {
         <h1 className="text-4xl font-poppins font-semibold text-center">
           Our Product
         </h1>
-        {data.map((item, index) => (
+        {data.map((item: any) => (
           <div
             className="grid gap-4 lg:pb-10 lg:grid-cols-5 pt-12 p-6"
-            key={index}
+            key={item.id}
           >
             <div className="card">
               <Image

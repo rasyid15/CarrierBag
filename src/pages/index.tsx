@@ -2,13 +2,30 @@ import Navbar from "@/component/navbar";
 import Footer from "@/component/footer";
 import Image from "next/image";
 import Carrier from "/public/Carrier.jpg";
-import Link from "next/link";
 import Head from "next/head";
-import data from "@/data/data";
 import useFavorites from "@/hooks/useFavorites";
 import { useRouter } from "next/router";
+import { useState, useEffect } from "react";
 
 export default function Home() {
+  const [data, setData] = useState<any>([]);
+
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const response = await fetch(
+          "https://api.jsonbin.io/v3/b/640ed497ebd26539d08dbbef"
+        );
+        const data = await response.json();
+        setData(data.record);
+      } catch (error) {
+        console.log(error);
+      }
+    };
+
+    fetchData();
+  }, []);
+
   const { favorites, toggleFavorite } = useFavorites();
   const router = useRouter();
 
@@ -40,10 +57,12 @@ export default function Home() {
             <button className="button">Buy Now!</button>
           </div>
         </div>
-        <div className="text-center text-3xl font-poppins font-semibold mb-10">Our Best Sales!</div>
+        <div className="text-center text-3xl font-poppins font-semibold mb-10">
+          Our Best Sales!
+        </div>
         <div className="grid grid-cols-4 gap-4 p-4">
-          {data.map((item, index) => (
-            <div className="" key={index}>
+          {data.map((item: any) => (
+            <div className="" key={item.id}>
               <div className="card">
                 <Image
                   className="w-full"

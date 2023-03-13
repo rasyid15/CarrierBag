@@ -1,7 +1,7 @@
 import Navbar from "@/component/navbar";
 import Footer from "@/component/footer";
 import Head from "next/head";
-import data from "../data/data";
+import data from "../data/data.json";
 import Image from "next/image";
 import useFavorites from "@/hooks/useFavorites";
 

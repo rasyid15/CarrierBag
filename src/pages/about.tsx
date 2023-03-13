@@ -4,7 +4,7 @@ import Head from "next/head";
 import Image from "next/image";
 import Carrier from "/public/Carrier.jpg";
 import Link from "next/link";
-import aboutData from "@/data/about";
+import aboutData from "@/data/about.json";
 
 export default function About() {
   return (
